@@ -1,0 +1,8 @@
+numpy>=1.18.1
+six>=1.14.0
+pandas>=1.0.1
+torch>=1.5.0
+pyhanlp>=0.1.66
+tqdm>=4.45.0
+tensorflow~=1.15.0
+torchtext>=0.6.0
