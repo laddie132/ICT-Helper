@@ -6,15 +6,15 @@ __email__ = "liuhan132@foxmail.com"
 
 
 from pyhanlp import *
-from data_reader import TextClsReader
+from utils.data_reader import TextClsReader
 
 
 def test_reader():
-    reader = TextClsReader(raw_data_path='data/ict_fault.csv',
-                           vocab_path='data/vocab_words.txt',
-                           train_path='data/train.csv',
-                           dev_path='data/dev.csv',
-                           test_path='data/test.csv',
+    reader = TextClsReader(raw_data_path='../data/ict_fault.csv',
+                           vocab_path='../data/vocab_words.txt',
+                           train_path='../data/train.csv',
+                           dev_path='../data/dev.csv',
+                           test_path='../data/test.csv',
                            max_text_length=128)
 
     train_data_loader = reader.get_dataloader_train(batch_size=32,

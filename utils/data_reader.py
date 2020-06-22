@@ -7,8 +7,8 @@ __email__ = "liuhan132@foxmail.com"
 import pandas as pd
 import torch
 import torch.utils.data
-from tokenizer import Vocabulary, LabelVocab
-from utils import pad_sequences
+from utils.tokenizer import Vocabulary, LabelVocab
+from utils.functions import pad_sequences
 
 
 class TextClsReader:

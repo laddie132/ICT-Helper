@@ -198,11 +198,11 @@ class Vocabulary:
 
 
 def preprocess():
-    DATA_PATH = 'data/ict_fault.csv'
-    VOCAB_PATH = 'data/vocab_words.txt'
+    DATA_PATH = '../data/ict_fault.csv'
+    VOCAB_PATH = '../data/vocab_words.txt'
     EMB_PATH = '/home/sth/code/Text-Classification-Pytorch/data/embedding/merge_sgns_bigram_char300.txt'
-    SAVE_EMB_PATH = 'data/vocab_emb.npy'
-    OOV_PATH = 'data/oov_words.txt'
+    SAVE_EMB_PATH = '../data/vocab_emb.npy'
+    OOV_PATH = '../data/oov_words.txt'
     EMB_DIM = 300
 
     vocab = Vocabulary(data_path=DATA_PATH, vocab_path=VOCAB_PATH)
