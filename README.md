@@ -57,7 +57,35 @@ python build_dataset.py
 ```shell script
 TODO
 ```
+
+### 模型图
+![text-cnn](text-cnn.jpg)
+
 使用上述脚本，训练Text-CNN模型，相关代码在`text-cnn`文件夹下。使用HanLP分词器，以及ChineseWordVectors(merge)中文词向量，实现多个单分类器，以及一个多任务分类模型。模型如下：
+
+## 多任务模型 (Multitask-CNN)
+```
+调用方法及测试用例可参考 Multitask-CNN/test_example.py
+```
+
+### 模型图
+![multitask-cnn](multitask-cnn.jpg)
+
+多任务模型基于上述CNN模型进行改进，采用了多任务学习的方式，使所有分类器都共享同一个Text-CNN编码器，因此使用一个分类模型就可以同时对多个字段进行分类，并且可以通过在不同字段分类器之间共享参数提高模型的整体性能和泛化能力。
+
+## 超参数设置
+
+### BERT
+TODO
+
+### CNN & Multitask-CNN
+两个模型使用同一套超参数：
+- 激活函数：ReLU
+- 预训练词向量维度：300
+- 卷积核大小：共有3种大小分别为3, 4, 5的卷积核
+- 特征图数量：每种卷积核各有128个特征图，共计384个
+- Dropout比率：0.2
+- Batch size：32
 
 ## 实验结果
 
@@ -72,13 +100,13 @@ TODO
 
 | Model | 异常类型-Acc | 异常类型细项-Acc | 故障组件-Acc | 形成原因-Acc | 形成原因细项-Acc |
 | - | - | - | - | - | - |
-| CNN   |              |                  |              |              |
+| Multitask-CNN |    79.38    |      68.75     |    46.88    |    89.38   |     21.25      |
 
 3. 多任务模型（Top-3）
 
 | Model | 异常类型-Acc | 异常类型细项-Acc | 故障组件-Acc | 形成原因-Acc | 形成原因细项-Acc |
 | - | - | - | - | - | - |
-| CNN   |              |                  |              |              |
+| Multitask-CNN |  100.00     |      89.38     |    87.50    |   100.00    |     38.13      |
 
 ## 参考
 
