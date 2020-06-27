@@ -7,10 +7,6 @@
 pip install -r requirements.txt
 ```
 
-## 流程图
-
-TODO
-
 ## 制作数据集
 
 ```shell script
@@ -53,30 +49,34 @@ python build_dataset.py
 
 对于三个字段，分别进行单独的训练，由于数据量较少，性能受限，较CNN有一定差距，实验结果见下文。
 
-## CNN模型
-```shell script
-TODO
+<img src="https://github.com/laddie132/ICT-Helper/raw/master/imgs/bert.png" width="300" alt=""/>
+
+## Text-CNN模型
+```
+调用方法及测试用例可参考 text-cnn/main.py
 ```
 
-### 模型图
-![text-cnn](text-cnn.jpg)
+使用上述脚本，训练Text-CNN模型，相关代码在`Multitask-CNN`文件夹下。使用HanLP分词器，以及ChineseWordVectors(merge)中文词向量，实现多个单分类器，以及一个多任务分类模型。模型如下：
 
-使用上述脚本，训练Text-CNN模型，相关代码在`text-cnn`文件夹下。使用HanLP分词器，以及ChineseWordVectors(merge)中文词向量，实现多个单分类器，以及一个多任务分类模型。模型如下：
+<img src="https://github.com/laddie132/ICT-Helper/raw/master/imgs/text-cnn.jpg" width="600" alt=""/>
 
 ## 多任务模型 (Multitask-CNN)
 ```
 调用方法及测试用例可参考 Multitask-CNN/test_example.py
 ```
 
-### 模型图
-![multitask-cnn](multitask-cnn.jpg)
+<img src="https://github.com/laddie132/ICT-Helper/raw/master/imgs/multitask-cnn.jpg" width="600" alt=""/>
 
 多任务模型基于上述CNN模型进行改进，采用了多任务学习的方式，使所有分类器都共享同一个Text-CNN编码器，因此使用一个分类模型就可以同时对多个字段进行分类，并且可以通过在不同字段分类器之间共享参数提高模型的整体性能和泛化能力。
 
 ## 超参数设置
 
 ### BERT
-TODO
+Fine-tune阶段设置如下超参数，其余保持默认。
+- 最大句子长度: 128
+- Learning rate: 2e-5
+- Batch size: 32
+- Epochs: 3
 
 ### CNN & Multitask-CNN
 两个模型使用同一套超参数：
